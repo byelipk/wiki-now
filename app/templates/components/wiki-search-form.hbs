@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="col-7 offset-1">
+    <div class="dropdown" tabindex="0">
+      <input type="text"
+             class="form-control form-control-lg"
+             id="search-input"
+             placeholder="Type something..."
+             aria-haspopup="true"
+             aria-expanded="false"
+             tabindex="-1">
+
+      <div id="results-dropdown" class="dropdown-menu">
+        <!-- Results show up here -->
+      </div>
+    </div>
+  </div>
+
+  <div class="col-2">
+    <button type="submit" class="btn btn-primary btn-lg">Search</button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <p class="mt-3">
+      <button {{action "close"}} type="button" class="btn btn-link">Close</button>
+    </p>
+  </div>
+</div>
+
+
+{{!-- {{#basic-dropdown class="dropdown"
+                  horizontalPosition="center"
+                  verticalPosition="below" as |dd|}}
+  <div class="mt-3 text-center pt-3">
+    {{#dd.trigger class="wiki-toggle-btn"}}
+      Click me
+    {{/dd.trigger}}
+
+    {{#dd.content class="wiki-dropdown"}}
+      Hello world
+    {{/dd.content}}
+  </div>
+{{/basic-dropdown}} --}}

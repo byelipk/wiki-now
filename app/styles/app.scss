@@ -1,0 +1,101 @@
+@import "bootstrap";
+
+.wiki-container {
+  @extend .container;
+  margin-top: 5rem;
+}
+
+.wiki-dropdown {
+  @extend .mt-1;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  float: left;
+  min-width: 10rem;
+  padding: 0.5rem 0;
+  margin: 0.125rem 0 0;
+  font-size: 1rem;
+  color: #292b2c;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0, 0, 0, 0.15);
+  border-radius: 0.25rem;
+}
+
+.wiki-wrapper {
+  @extend .mt-3;
+  @extend .text-center;
+  @extend .pt-3;
+}
+
+.wiki-toggle-btn {
+  @extend .btn;
+  @extend .btn-outline-primary;
+  @extend .btn-lg;
+  cursor: pointer;
+}
+
+// Keyframe block
+
+@keyframes go-up {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5rem);
+    opacity: 0;
+  }
+}
+
+@keyframes go-down {
+  0% {
+    transform: translateY(-5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes rise-up {
+  0% {
+    transform: translateY(5rem);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes drop-down {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(5rem);
+    opacity: 0;
+  }
+}
+
+.go-up {
+  animation: go-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.go-down {
+  animation: go-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.rise-up {
+  animation: rise-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.drop-down {
+  animation: drop-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}

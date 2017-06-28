@@ -1,0 +1,12 @@
+<h1 class="display-4 text-center">Wikipedia noW</h1>
+<p class="lead text-center">Search the world's free encyclopedia</p>
+
+<img src="/assets/images/logo2x.png"
+     class="img-fluid mx-auto d-block mb-3 w-50"
+     alt="Responsive image">
+
+{{#if showForm}}
+  {{wiki-btn onClick=(action 'hideBtn') animateIn=animateIn}}
+{{else}}
+  {{wiki-search-form onClose=(action 'hideSearchForm')}}
+{{/if}}
