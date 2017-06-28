@@ -13,6 +13,10 @@ export default Ember.Component.extend({
     }
   },
 
+  didInsertElement() {
+    document.querySelector("input[type='text']").focus();
+  },
+
   animationEnd() {
     if (this.get('dropDown')) {
       this.sendAction('onClose');
