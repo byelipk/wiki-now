@@ -42,44 +42,44 @@
 
 @keyframes go-up {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translateY(-5rem);
+    transform: translateY(-5rem) scale(2);
     opacity: 0;
   }
 }
 
 @keyframes go-down {
   0% {
-    transform: translateY(-5rem);
+    transform: translateY(-5rem) scale(2);
     opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes rise-up {
   0% {
-    transform: translateY(5rem);
+    transform: translateY(5rem) scale(0);
     opacity: 0;
   }
   100% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
 }
 
 @keyframes drop-down {
   0% {
-    transform: translateY(0);
+    transform: translateY(0) scale(1);
     opacity: 1;
   }
   100% {
-    transform: translateY(5rem);
+    transform: translateY(5rem) scale(0);
     opacity: 0;
   }
 }
