@@ -34,7 +34,10 @@
 }
 
 .wiki-dropdown {
-  li {
-    padding: .5rem 1rem;
+  ul.ember-power-select-options[role="listbox"] {
+    max-height: 15rem;
+    li {
+      padding: .15rem .75rem;
+    }
   }
 }
