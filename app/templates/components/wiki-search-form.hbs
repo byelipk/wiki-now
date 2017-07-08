@@ -1,12 +1,13 @@
 <div class="row">
   <div class="col-7 offset-1">
     {{#power-select-typeahead
-        search=(action 'searchGithubAsync')
         selected=selected
-        extra=(hash labelPath="full_name")
+        search=(action 'searchGithubAsync')
         onchange=(action (mut selected))
+        extra=(hash labelPath="full_name")
         as |repo|}}
-      {{repo.full_name}}
+      {{safe-link repo}}
+      <small>{{repo.description}}</small>
     {{/power-select-typeahead}}
   </div>
 

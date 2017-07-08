@@ -1,5 +1,6 @@
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
+import Github from '../utils/github';
 
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
@@ -18,13 +19,20 @@ export default Ember.Component.extend({
   },
 
   submit() {
-    return false;
+    const repo = this.get('selected');
+
+    if (repo && repo.html_url) {
+      window.open(repo.html_url, "_blank");
+    }
+    else {
+      return false;
+    }
   },
 
   searchGithub: task(function * (term) {
     yield timeout(1000);
 
-    const url = this.buildURL(term);
+    const url = Github(term);
 
     try {
       const response = yield this.get('ajax').request(url);
@@ -32,14 +40,5 @@ export default Ember.Component.extend({
     } catch (e) {
       return [];
     }
-  }).restartable(),
-
-  buildURL(term) {
-    if (term) {
-      return `https://api.github.com/search/repositories` +
-             `?q=${term}&order=desc&per_page=5`;
-    }
-  }
-
-
+  }).restartable()
 });
