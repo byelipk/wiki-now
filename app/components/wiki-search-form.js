@@ -1,70 +1,44 @@
 import Ember from 'ember';
 import { task, timeout } from 'ember-concurrency';
 
-const users = [
-  { name: 'Nathan', assignment: 'CLI' },
-  { name: 'Rober', assignment: 'Whatnot' },
-  { name: 'Leah', assignment: 'Community' },
-  { name: 'Sean', assignment: 'Sex' },
-  { name: 'COnor', assignment: 'Beach' }
-];
-
 export default Ember.Component.extend({
   ajax: Ember.inject.service(),
 
-  classNames: ['wiki-wrapper', 'rise-up'],
-  classNameBindings: ['dropDown'],
+  classNames: ['wiki-wrapper'],
   tagName: 'form',
-
-  dropDown: false,
 
   actions: {
     close() {
-      this.toggleProperty('dropDown');
+      this.get('onClose')();
     },
 
-    onKeyDown() {
-      return false;  // ignore everything
-    },
-
-    onKeyPress(dropdown, evt) {
-      dropdown.actions.open(evt);
+    searchGithubAsync(term) {
+      return this.get('searchGithub').perform(term);
     }
   },
 
-  didInsertElement() {
-    document.querySelector("input[type='text']").focus();
+  submit() {
+    return false;
   },
 
-  animationEnd() {
-    if (this.get('dropDown')) {
-      this.sendAction('onClose');
+  searchGithub: task(function * (term) {
+    yield timeout(1000);
+
+    const url = this.buildURL(term);
+
+    try {
+      const response = yield this.get('ajax').request(url);
+      return response.items;
+    } catch (e) {
+      return [];
     }
-  },
-
-  submit(evt) {
-    evt.preventDefault();
-  },
-
-  searchGithub: task(function * (dropdown, evt) {
-    const term = evt.target.value;
-    const url  = this.buildURL(term);
-
-    let response = yield this.get('getJSON').perform(url);
-
-    return response.items;
   }).restartable(),
 
-  getJSON: task(function * (url) {
-    try {
-      return yield this.get('ajax').request(url);
-    } catch (e) {
-      console.error("There was an error:", e);
-    }
-  }),
-
   buildURL(term) {
-    return `https://api.github.com/search/repositories?q=tetris+language:assembly&sort=stars&order=desc&per_page=5`;
+    if (term) {
+      return `https://api.github.com/search/repositories` +
+             `?q=${term}&order=desc&per_page=5`;
+    }
   }
 
 

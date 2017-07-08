@@ -1,38 +1,25 @@
 <div class="row">
   <div class="col-7 offset-1">
-      {{#basic-dropdown matchTriggerWidth=true
-                        onOpen=(perform searchGithub) as |dd|}}
-
-        {{#dd.trigger onKeyDown=(action 'onKeyDown')}}
-          {{input value=(mut (get this 'searchTerm'))
-                  keyPress=(action 'onKeyPress' dd)
-                  class="form-control form-control-lg"
-                  placeholder="Begin typing..."
-                  autocomplete="off"}}
-        {{/dd.trigger}}
-
-        {{#dd.content class="wiki-dropdown"}}
-          {{#if searchGithub.isRunning}}
-            <p class="text-center p3">Loading...</p>
-          {{else}}
-            {{#each searchGithub.lastSuccessful.value as |repo|}}
-              {{wiki-repo repo=repo}}
-            {{/each}}
-          {{/if}}
-        {{/dd.content}}
-
-      {{/basic-dropdown}}
+    {{#power-select-typeahead
+        search=(action 'searchGithubAsync')
+        selected=selected
+        extra=(hash labelPath="full_name")
+        onchange=(action (mut selected))
+        as |repo|}}
+      {{repo.full_name}}
+    {{/power-select-typeahead}}
   </div>
 
   <div class="col-2">
-    <button type="submit" class="btn btn-primary btn-lg">Search</button>
+    <button type="submit" class="wiki-search-btn">Search</button>
   </div>
 </div>
 
 <div class="row">
   <div class="col-12">
     <p class="mt-3">
-      <button {{action "close"}} type="button" class="btn btn-link">Close</button>
+      <button {{action "close"}}
+        type="button" class="btn btn-link">Close</button>
     </p>
   </div>
 </div>

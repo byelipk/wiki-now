@@ -1,0 +1,61 @@
+// Keyframe block
+
+@keyframes go-up {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-5rem) scale(2);
+    opacity: 0;
+  }
+}
+
+@keyframes go-down {
+  0% {
+    transform: translateY(-5rem) scale(2);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes rise-up {
+  0% {
+    transform: translateY(5rem) scale(0);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+@keyframes drop-down {
+  0% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(5rem) scale(0);
+    opacity: 0;
+  }
+}
+
+.go-up {
+  animation: go-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.go-down {
+  animation: go-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.rise-up {
+  animation: rise-up 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}
+
+.drop-down {
+  animation: drop-down 200ms cubic-bezier(.4,.42,.53,.91) 1;
+}

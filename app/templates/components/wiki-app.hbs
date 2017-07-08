@@ -2,11 +2,11 @@
 <p class="lead text-center">Search the world's free encyclopedia</p>
 
 <img src="/assets/images/logo2x.png"
-     class="img-fluid mx-auto d-block mb-3 w-50"
+     class="img-fluid mx-auto d-block mb-3 w-25"
      alt="Responsive image">
 
 {{#if showForm}}
-  {{wiki-btn onClick=(action 'hideBtn') animateIn=animateIn}}
+  {{wiki-search-form onClose=(action 'toggleForm')}}
 {{else}}
-  {{wiki-search-form onClose=(action 'hideSearchForm')}}
+  {{wiki-btn onClick=(action 'toggleForm')}}
 {{/if}}
