@@ -29,6 +29,11 @@ export default Ember.Component.extend({
     }
   },
 
+  didInsertElement() {
+    this._super(...arguments);
+    document.querySelector('input').focus();
+  },
+
   searchGithub: task(function * (term) {
     yield timeout(250);
 
