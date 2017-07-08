@@ -30,7 +30,7 @@ export default Ember.Component.extend({
   },
 
   searchGithub: task(function * (term) {
-    yield timeout(1000);
+    yield timeout(250);
 
     const url = Github(term);
 
