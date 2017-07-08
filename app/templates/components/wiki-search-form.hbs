@@ -5,6 +5,8 @@
         search=(action 'searchGithubAsync')
         onchange=(action (mut selected))
         extra=(hash labelPath="full_name")
+        triggerClass="wiki-trigger"
+        dropdownClass="wiki-dropdown"
         as |repo|}}
       {{safe-link repo}}
       <small>{{repo.description}}</small>

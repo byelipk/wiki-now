@@ -27,5 +27,14 @@
 .wiki-search-btn {
   @extend .btn;
   @extend .btn-primary;
-  // @extend .btn-lg;
+}
+
+.wiki-trigger {
+  padding: 1.25rem;
+}
+
+.wiki-dropdown {
+  li {
+    padding: .5rem 1rem;
+  }
 }

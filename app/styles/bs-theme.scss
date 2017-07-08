@@ -20,7 +20,7 @@ $ember-power-select-opened-border-radius: 4px !default;
 $ember-power-select-search-input-border-radius: 3px !default;
 
 // Other
-$ember-power-select-line-height: 2.25rem;
+$ember-power-select-line-height: $line-height-base;
 $ember-power-select-trigger-icon-color: #999 !default;
 $ember-power-select-focus-outline: 0 !default;
 $ember-power-select-dropdown-margin: $dropdown-margin-top;
